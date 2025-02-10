@@ -1,6 +1,6 @@
 num_sequences=$(grep -c '>' $1)
 # To count the total length of the sequences
-total_length=$(grep -v '>' $1 | wc -c)
+total_length=$(awk '/^>/ {next} {totallength += length $0} END{print totallength}' $1)
 #Longest seq
 length_of_the_longest_sequence=$(awk '/>/ {if (seq) print seq; print; seq=""; next} {seq=seq $0} END {print seq}' $1 | grep -v '>'| awk '{print length($0)}' | sort -n | tail -n 1)
 #Shortest seq
