@@ -10,6 +10,7 @@ gc_count=$(grep -v '>' $1 | awk '{gc_count += gsub(/[GgCc]/, "", $1)} END {print
 
 
 echo "FASTA File Statistics:"
+echo "----------------------"
 echo "Number of sequences: $num_sequences"
 echo "Total length of sequences: $total_length"
 echo "Length of the longest sequence: $length_of_the_longest_sequence" 
